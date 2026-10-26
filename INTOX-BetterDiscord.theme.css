@@ -3,12 +3,12 @@
  * @author INTOX
  * @version 7.0.1
  * @description Highly customizable theme for BetterDiscord.
- * @source https://github.com/imintox/INTOXBlackout-v1
- * @website https://imintox.github.io/INTOXBlackout-v1
+ * @source https://github.com/imintox/INTOX-v1
+ * @website https://imintox.github.io/INTOX-v1
  */
 /* IMPORT CSS */
-@import url("https://imintox.github.io/INTOXBlackout-v1/main.css");
-@import url("https://imintox.github.io/INTOXBlackout-v1/betterdiscord.css");
+@import url("https://imintox.github.io/INTOX-v1/main.css");
+@import url("https://imintox.github.io/INTOX-v1/betterdiscord.css");
 /* SETTINGS */
 :root {
   /* ACCENT COLORS */
