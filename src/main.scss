@@ -94,7 +94,8 @@ $calc: h calc(#{$sf} * s) l / alpha; // avoid repetition
   --user-modal-attachment: var(--background-attachment);
   --user-modal-filter: var(--background-filter);
 
-  --home-icon: url(https://clearvision.github.io/icons/discord.svg);
+  --home-icon: none;
+  --home-native: inline;
   --home-size: cover;
 
   --main-font: 'gg sans', Whitney, 'Helvetica Neue', Helvetica, Arial, sans-serif;

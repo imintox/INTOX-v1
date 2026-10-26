@@ -9,8 +9,8 @@
  */
 
 /* IMPORT CSS */
-@import url("#{$website}/INTOX/#{$main_import}");
-@import url("#{$website}/INTOX/#{$vc_import}");
+@import url("#{$website}/#{$main_import}");
+@import url("#{$website}/#{$vc_import}");
 
 /* SETTINGS */
 :root {
@@ -46,7 +46,8 @@
   --user-modal-attachment: var(--background-attachment); /* user modal background attachment [default: var(--background-attachment)] */
   --user-modal-filter: var(--background-filter); /* user modal background adjustments (ex: blur, saturation, brightness) (more info: https://developer.mozilla.org/en-US/docs/Web/CSS/filter) [default: var(--background-filter);] */
   /* HOME ICON */
-  --home-icon: url(https://clearvision.github.io/icons/discord.svg); /* home button icon (link must be HTTPS) [default: url(https://clearvision.github.io/icons/discord.svg)]*/
+  --home-icon: none; /* custom home button icon, e.g. url(https://...). Also set --home-native: none to hide Discord's own icon [default: none] */
+  --home-native: inline; /* inline = show Discord's own home icon, none = hide it (use with --home-icon) [default: inline] */
   --home-size: cover; /* home button icon size (px) [default:cover] */
   /* FONTS */
   --main-font: 'gg sans', 'Helvetica Neue', Helvetica, Arial, sans-serif; /* main font for app (font must be installed) [default: gg sans, Helvetica Neue, Helvetica, Arial, sans-serif] */

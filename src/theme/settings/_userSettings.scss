@@ -238,7 +238,8 @@
 
 // VOICE & VIDEO
 #{c(userSettings voice notchesContainer)} {
-  mask-image: url(https://clearvision.github.io/icons/pill.svg);
+  border-radius: 999px; // pill shape (was a remote mask image)
+  overflow: hidden;
   background: cv('color.main') !important; // inline
 }
 :is(#{c(main themeLight)}, #{c(main themeDark)}) {

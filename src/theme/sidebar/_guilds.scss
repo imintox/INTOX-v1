@@ -33,7 +33,7 @@
     background: cv('home.icon') center/cv('home.size') no-repeat;
   }
   path {
-    display: none;
+    display: var(--home-native, inline); // Discord's own icon shows unless --home-native: none
   }
 }
 #{c(guildList iconWrapper)} {

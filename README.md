@@ -46,6 +46,12 @@ Download a theme file from this repo and move it into your themes folder:
 - `INTOX-Vencord.css` for Vencord: `%appdata%\vencord\themes`
 - `INTOX-BetterDiscord.theme.css` for BetterDiscord: `%appdata%\betterdiscord\themes`
 
+## Editor
+
+Build your own look with the live editor, then copy the CSS into Vencord's QuickCSS:
+
+**https://imintox.github.io/INTOX-Editor/**
+
 ## Customizing
 
 To change colors, the background, fonts and more, paste [`INTOX-Customize.css`](https://github.com/imintox/INTOX-v1/blob/main/INTOX-Customize.css) into Vencord's QuickCSS:
