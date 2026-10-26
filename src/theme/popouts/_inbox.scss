@@ -1,0 +1,33 @@
+@use 'backend' as *;
+
+// SHARED
+#{c(popouts inbox popout)} {
+  background: cv('shading.popout');
+  box-shadow: none;
+}
+#{c(popouts inbox header)} {
+  background: transparent;
+}
+#{c(popouts inbox messageBox)} {
+  background: cv('shading.cardAlt');
+}
+#{c(popouts inbox channelHeader)} {
+  background: cv('shading.popout');
+  padding-left: 20px;
+  padding-right: 6px;
+}
+#{c(popouts inbox emptyIcon)} {
+  background: cv('color.main');
+  color: var(--interactive-icon-active);
+}
+
+// UNREAD
+#{c(popouts inbox unread tutorial)} {
+  background: cv('shading.card');
+}
+#{c(popouts inbox unread tutorialIcon)} {
+  background: cv('color.main');
+  color: cv('icon.strong');
+}
+
+// MENTIONS

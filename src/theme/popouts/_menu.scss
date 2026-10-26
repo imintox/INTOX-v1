@@ -1,0 +1,88 @@
+@use 'backend' as *;
+
+#{c(popouts menus menu)} {
+  background: cv('shading.popout');
+  border: none;
+  border-radius: 5px;
+}
+#{c(popouts menus colorDefault)} {
+  &#{c(popouts menus itemFocused)} {
+    background-color: cv('color.hover');
+  }
+  &:active {
+    &:not(#{c(popouts menus itemHideInteraction)}) {
+      background-color: cv('color.main');
+    }    
+    #{c(popouts menus label)} {
+      color: var(--interactive-text-active);
+    }
+  }
+}
+#{c(popouts menus colorDanger)} {
+  &#{c(popouts menus itemFocused)} {
+    background-color: cv('color.danger');
+    &:not(#{c(popouts menus checkboxContainer)}) {
+      // discord does it this way
+      path {
+        fill: var(--interactive-text-active);
+      }
+    }
+  }
+  &:active {
+    &:not(#{c(popouts menus itemHideInteraction)}) {
+      background-color: cv('color.danger');
+      color: var(--interactive-text-active);
+    }
+  }
+}
+
+#{c(popouts menus item)} {
+  &#{c(popouts menus itemFocused)} {
+    #{c(popouts menus label)} {
+      color: var(--interactive-text-active);
+    }
+  }
+}
+
+// STATUS PICKER
+// inline styles
+#{c(popouts menus status)} {
+  &[style='background-color: rgb(132, 133, 141);'] {
+    background-color: cv('color.offline') !important;
+  }
+  &[style='background-color: rgb(69, 163, 102);'] {
+    background-color: cv('color.online') !important;
+  }
+  &[style='background-color: rgb(255, 192, 78);'] {
+    background-color: cv('color.idle') !important;
+  }
+  &[style='background-color: rgb(218, 62, 68);'] {
+    background-color: cv('color.dnd') !important;
+  }
+}
+#{c(popouts menus itemFocused)} {
+  &#set-status-submenu-online {
+    background-color: cv('color.online');
+  }
+  &#set-status-submenu-idle {
+    background-color: cv('color.idle');
+  }
+  &#set-status-submenu-dnd {
+    background-color: cv('color.dnd');
+  }
+  &#set-status-submenu-invisible {
+    background-color: cv('color.offline');
+  }
+}
+
+// ACCOUNT SWITCHER
+#{c(popouts menus accountSwitcher activeIcon)} {
+  path {
+    fill: cv('color.main');
+  }
+  #{c(popouts menus accountSwitcher focused)} & {
+    circle {
+      fill: cv('color.main');
+    }
+  }
+}

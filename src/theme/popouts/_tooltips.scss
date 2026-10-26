@@ -1,0 +1,12 @@
+@use 'backend' as *;
+
+#{c(tooltips tooltip)} {
+  background-color: cv('shading.popout');
+  border: none;
+}
+
+#{c(tooltips caretIcon)} {
+  #{c(tooltips caretFill)} {
+    fill: cv('shading.popout');
+  }
+}

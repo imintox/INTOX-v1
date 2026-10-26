@@ -1,0 +1,56 @@
+@use 'backend' as *;
+
+#{c(popouts dropdown filled)} {
+  &#{c(popouts dropdown select)} {
+    box-shadow: none;
+    &:hover {
+      border: 1px solid var(--input-border);
+    }
+  }
+}
+#{c(popouts dropdown popout)} {
+  &,
+  &#{c(popouts dropdown positionTop)} {
+    background: cv('shading.popout');
+    border: none;
+  }
+}
+#{c(popouts dropdown option)} {
+  border-radius: 8px;
+  margin: 0 8px;
+  &[aria-selected='true'] {
+    background: cv('color.main');
+    &:not(#{c(popouts dropdown option)}#{c(popouts dropdown multi)}) {
+      background: cv('color.main');
+    }
+  }
+}
+
+// SINGLE SELECT
+#{c(popouts dropdown selectedIcon)} {
+  color: cv('icon.strong');
+  circle {
+    fill: cv('color.main');
+  }
+}
+
+
+
+#{c(popouts dropdown selectField)} {
+  &:not(#{c(popouts dropdown selectFieldInert)}) {
+    &:is(#{c(popouts dropdown selectFieldFocused)}, :focus-within) {
+      outline-color: cv('color.main');
+    }
+  }
+}
+#{c(popouts dropdown dropdown)} {
+  background-color: cv('shading.popout');
+}
+
+#{c(popouts dropdown listBoxItem)} {
+  #{c(popouts dropdown listBox)}:not(:focus-within) &[data-focus-visible=true],
+  #{c(main keyboardMode)} &:focus {
+    outline: none;
+    background: cv('color.main');
+  }
+}

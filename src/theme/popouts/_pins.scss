@@ -1,0 +1,14 @@
+@use 'backend' as *;
+
+#{c(popouts pins popout)} {
+  background: cv('shading.popout');
+  box-shadow: none;
+}
+#{c(popouts pins header)},
+#{c(popouts pins footer)} {
+  background: transparent;
+}
+#{c(popouts pins messageGroup)} {
+  background: cv('shading.cardAlt');
+  border: none;
+}
