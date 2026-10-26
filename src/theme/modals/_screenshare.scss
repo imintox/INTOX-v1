@@ -1,0 +1,11 @@
+@use 'backend' as *;
+#{c(modals screenshare footer)} {
+  background: transparent;
+}
+
+#{c(modals screenshare pillContainer)} {
+  background: cv('shading.cardAlt');
+}
+#{c(modals screenshare pillItemSelected)} {
+  background: cv('color.main');
+}

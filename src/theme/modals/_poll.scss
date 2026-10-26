@@ -1,0 +1,11 @@
+@use 'backend' as *;
+
+
+// CREATE POLL
+
+
+// VIEW VOTES
+#{c(modals poll votes sidebarScroller)},
+#{c(modals poll votes voters)} {
+  background: transparent;
+}

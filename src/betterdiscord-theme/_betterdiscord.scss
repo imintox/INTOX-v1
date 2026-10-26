@@ -1,0 +1,80 @@
+@use 'backend' as *;
+
+// settings
+#{c(main visualRefresh)} {
+  // addon/theme stores
+  #{c(bd addonStore)} {
+    background: cv('shading.card');
+    border: 1px solid transparent;
+    &:hover {
+      background: cv('shading.card');
+      box-shadow: none;
+      border-color: cv('color.main');
+    }
+  }
+  // Inside addon store
+  #{c(bd addonStoreCard)} {
+    background: cv('shading.card');
+    border: 1px solid transparent;
+    &:hover {
+      background: cv('shading.card');
+      box-shadow: none;
+      border-color: cv('color.main');
+    }
+    #{c(bd addonStoreTag)} {
+      background: transparent;
+      border: 1px solid cv('color.main');
+    }
+  }
+  // actual addons
+  #{c(bd addonCard)} {
+    background: cv('shading.card');
+    border: 2px solid transparent;
+    &:hover {
+      background: cv('shading.card');
+      border-color: cv('color.main');
+    }
+  }
+  #{c(bd addonHeader)} {
+    background: cv('shading.card');
+  }
+  // notifications
+  #{c(bd notification)} {
+    background: cv('shading.card');
+  }
+  #{c(bd notificationFooter)} {
+    background: transparent;
+  }
+  // modals
+  #{c(bd modal)} {
+    background: cv('shading.card');
+    border: 2px solid cv('color.main');
+  }
+  #{c(bd modalFooter)} {
+    background: transparent;
+  }
+  // new buttons for some reason
+  #{c(bd buttonFilled)} {
+    &#{c(bd buttonPrimary)} {
+      border-radius: 4px;
+      background: cv('color.main');
+      border-color: transparent;
+      &:hover,
+      &:active {
+        background: cv('color.hover');
+        border-color: transparent;
+      }
+    }
+  }
+  #{c(bd addonErrorIcon)} {
+    background: cv('color.main');
+  }
+  #{c(bd addonError)} {
+    border: 1px solid cv('color.main');
+  }
+}
+
+
+
+
+// NEW BUTTON CLASSES

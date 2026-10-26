@@ -1,0 +1,14 @@
+@use 'backend' as *;
+
+// TIMEOUT
+#{c(modals timeout selectorButton)} {
+  background: cv('shading.cardAlt');
+}
+:is(#{c(main themeLight)}, #{c(main themeDark)}) {
+  #{c(modals timeout item)} {
+    border-color: cv('color.main');
+  }
+}
+#{c(modals timeout selectorButtonSelected)}{
+  background: cv('color.main');
+}

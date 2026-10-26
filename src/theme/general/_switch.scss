@@ -1,0 +1,7 @@
+@use 'backend' as *;
+
+//  inline styles
+
+#{c(switch indicator)}:not([style*='background-color: rgba(0, 0, 0, 0.12)']) {
+  background: cv('color.main') !important;
+}

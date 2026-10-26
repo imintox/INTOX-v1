@@ -1,0 +1,47 @@
+@use "start" as *;
+@use "backend" as *;
+@use "sass:list";
+@use "sass:meta";
+@use "sass:string";
+/* USER TAGS */
+$tagged: (); // no user tags in INTOX
+
+// OUTPUT
+#{c(chat messageContents)} #{c(chat chatAvatar)} {
+	~ #{c(chat chatHeaderUsername)} #{c(chat chatUsername)}::after {
+		content: var(--tag, none);
+		font-size: clamp(10px, 0.7rem, 1rem);
+		font-style: italic;
+		margin-left: round(0.4rem, 1px);
+		vertical-align: super;
+		display: inline-block;
+		text-shadow: 0 0 3px currentColor;
+	}
+}
+
+// group = what tag will be used, will be used for content: #{$group}
+// user = string list for what user(s) will have that tag
+// itm = an item in alias when it's a list
+// output --lang is the name, as above
+@each $group, $user in $tagged {
+	// for lists
+	$k: "";
+	@if meta.type-of($user) == list {
+		@if list.length($user) > 1 {
+			$k: ":is("; // start :is(
+			@for $i from 1 through list.length($user) {
+				$k: string.insert($k,"[src*=\"" + list.nth($user,$i) + "\"],",-1);
+			}
+			// remove extra comma, add closing )
+			$k: string.slice($k,0,-2) + ")";
+		} @else {
+			$k: "[src*=\"" + list.nth($user,1) + "\"]";
+		}
+	} @else {
+	// and for single strings
+		$k: "[src*=\"#{$user}\"]";
+	}
+	#{c(chat chatAvatar)}#{$k} ~ #{c(chat chatHeaderUsername)} {
+		--tag: "#{$group}";
+	}
+}

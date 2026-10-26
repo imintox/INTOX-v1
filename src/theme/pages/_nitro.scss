@@ -1,0 +1,23 @@
+@use 'backend' as *;
+
+#{c(nitro store)} {
+  background: transparent;
+}
+#{c(nitro wrapper)} {
+  background: transparent;
+  border: none;
+}
+#{c(nitro scroller)} {
+  background: hsl(from cv('shading.bg') h s l/calc(cv('shading.percent') * 0.4));
+}
+
+// CARD
+#{c(nitro card)},
+#{c(nitro planCard)} {
+  background: cv('shading.card');
+}
+
+// FOOTER
+#{c(nitro footerButtonContainer)} {
+  background: cv('shading.popout');
+}

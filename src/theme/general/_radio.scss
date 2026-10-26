@@ -1,0 +1,21 @@
+@use 'backend' as *;
+
+#{c(radio base)} {
+  stroke:cv('icon.strong');
+  stroke-width: 4;
+}
+// SELECTED
+:is(#{c(radio groupOption)}, #{c(radio standaloneIndicator)}) {
+  &[data-selected] {
+    :is(#{c(radio base)}, #{c(radio fill)}) {
+      fill: none;
+      stroke:cv('icon.strong')
+    }
+    &:not([data-disabled]):hover {
+      :is(#{c(radio base)}, #{c(radio fill)}) {
+        fill: none;
+        stroke: cv('icon.strong')
+      }
+    }
+  }
+}

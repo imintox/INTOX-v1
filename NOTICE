@@ -1,0 +1,8 @@
+INTOX
+This product is a modified version of ClearVision v7
+(https://github.com/ClearVision/ClearVision-v7), originally created by
+the ClearVision Team (contributors include Zerthox, LeafyLuigi, Leozard and
+others) and licensed under the Apache License, Version 2.0.
+
+Changes: renamed to INTOX, removed ClearVision branding, community links and
+user tags. Third-party artwork credits are listed in README.md.
