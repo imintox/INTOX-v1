@@ -23,25 +23,39 @@
 
 ## Installing
 
-Note: INTOX doesn't actively support plugins (as in, we don't seek out and actively theme fixes to every new plugin). However, when a plugin is widely used, we try our best to stay compatible.
+### Vencord (online, always up to date)
 
-**For BD and Vencord:**
-
-Download the theme file from the releases page of this repo and move it into your injector's themes folder:
-
-- BetterDiscord: `%appdata%\betterdiscord\themes`
-- Vencord: `%appdata%\vencord\themes`
-
-**For using the theme online:**
-
-Host the built files (GitHub Pages works) and point your client at `main.css`.
-
-For customizing the theme from there, you'll want to use custom css and add any variables you'd like to change. It should look something like this:
+1. Open Discord, then go to **Settings → Vencord → Themes**.
+2. Paste this link into the **Online Themes** box:
 
 ```
+https://raw.githubusercontent.com/selfmadegrave/INTOXBlackout-v1/main/INTOX-Online.css
+```
+
+3. Enable INTOX in the list, then press `Ctrl+R` to reload Discord.
+
+### Vencord or BetterDiscord (download)
+
+Download a theme file from this repo and move it into your themes folder:
+
+- `INTOX-Vencord.css` for Vencord: `%appdata%\vencord\themes`
+- `INTOX-BetterDiscord.theme.css` for BetterDiscord: `%appdata%\betterdiscord\themes`
+
+## Customizing
+
+To change colors, the background, fonts and more, paste [`INTOX-Customize.css`](https://github.com/selfmadegrave/INTOXBlackout-v1/blob/main/INTOX-Customize.css) into Vencord's QuickCSS:
+
+1. Copy everything in `INTOX-Customize.css`.
+2. In Discord, go to **Settings → Vencord → Themes → Edit QuickCSS** and paste it at the bottom.
+3. Change the values you want. Delete any lines you don't want to change.
+
+Example:
+
+```css
 :root {
-	--main-color: red;
-	--hover-color: yellow;
+  --main-color: red;
+  --hover-color: yellow;
+  --background-size: cover; /* fill the window instead of fitting the whole image */
 }
 ```
 
