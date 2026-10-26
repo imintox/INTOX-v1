@@ -3,12 +3,12 @@
  * @author INTOX
  * @version 7.0.1
  * @description Highly customizable theme for Vencord.
- * @source https://github.com/YOUR_USERNAME/INTOX
- * @website https://YOUR_USERNAME.github.io/INTOX
+ * @source https://github.com/imintox/INTOXBlackout-v1
+ * @website https://imintox.github.io/INTOXBlackout-v1
  */
 /* IMPORT CSS */
-@import url("https://YOUR_USERNAME.github.io/INTOX/main.css");
-@import url("https://YOUR_USERNAME.github.io/INTOX/vencord.css");
+@import url("https://imintox.github.io/INTOXBlackout-v1/main.css");
+@import url("https://imintox.github.io/INTOXBlackout-v1/vencord.css");
 /* SETTINGS */
 :root {
   /* ACCENT COLORS */

@@ -29,7 +29,7 @@
 2. Paste this link into the **Online Themes** box:
 
 ```
-https://raw.githubusercontent.com/selfmadegrave/INTOXBlackout-v1/main/INTOX-Online.css
+https://raw.githubusercontent.com/imintox/INTOXBlackout-v1/main/INTOX-Online.css
 ```
 
 3. Enable INTOX in the list, then press `Ctrl+R` to reload Discord.
@@ -43,7 +43,7 @@ Download a theme file from this repo and move it into your themes folder:
 
 ## Customizing
 
-To change colors, the background, fonts and more, paste [`INTOX-Customize.css`](https://github.com/selfmadegrave/INTOXBlackout-v1/blob/main/INTOX-Customize.css) into Vencord's QuickCSS:
+To change colors, the background, fonts and more, paste [`INTOX-Customize.css`](https://github.com/imintox/INTOXBlackout-v1/blob/main/INTOX-Customize.css) into Vencord's QuickCSS:
 
 1. Copy everything in `INTOX-Customize.css`.
 2. In Discord, go to **Settings → Vencord → Themes → Edit QuickCSS** and paste it at the bottom.
