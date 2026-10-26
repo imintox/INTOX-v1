@@ -1,0 +1,46 @@
+/* INTOX - quick customization
+ *
+ * How to use:
+ * 1. Copy everything in this file.
+ * 2. In Vencord, open Settings > Vencord > Themes > Edit QuickCSS and paste it at the bottom.
+ * 3. Change the values you want. Delete any line you don't want to change.
+ *
+ * INTOX must be enabled in Vencord > Themes for these to apply.
+ */
+
+:root {
+  /* COLORS */
+  --main-color: #2780e6;          /* accent color */
+  --hover-color: #1e63b3;         /* accent color when hovered */
+  --success-color: #43b581;
+  --danger-color: #982929;
+
+  /* STATUS COLORS */
+  --online-color: #43b581;
+  --idle-color: #faa61a;
+  --dnd-color: #982929;
+  --streaming-color: #593695;
+  --offline-color: #808080;
+
+  /* BACKGROUND */
+  --background-image: url(https://files.catbox.moe/9pvwts.png); /* must be an https link */
+  --background-size: contain;     /* contain = never cropped, cover = fills window but crops */
+  --background-fill: #000;        /* color behind the image where it doesn't reach the edges */
+  --background-position: center;
+  --background-attachment: fixed;
+  --background-filter: none;      /* examples: blur(4px), brightness(0.8), saturate(1.3) */
+
+  /* FONTS */
+  --main-font: "gg sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --code-font: Consolas, "gg mono", "Liberation Mono", Menlo, Courier, monospace;
+}
+
+/* DARK THEME SHADING (bigger last number = darker) */
+:is(.theme-dark, .theme-light .theme-dark) {
+  --background-shading: rgba(0, 0, 0, 0.4);  /* overall tint over the background */
+  --card-shading: rgba(0, 0, 0, 0.2);        /* cards and panels */
+  --popout-shading: rgba(0, 0, 0, 0.6);      /* popouts */
+  --modal-shading: rgba(0, 0, 0, 0.4);       /* windows and settings */
+  --normal-text: #d8d8db;
+  --muted-text: #aeaeb4;
+}
