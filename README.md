@@ -15,6 +15,11 @@
 </div>
 
 ### Features
+- Minimalist black look with a single calm accent color
+- Clean, quick animations (menus, hover toolbar, focus) that turn off with `--intox-speed: 0ms` and follow your system's "reduce motion" setting
+- Glass-blur popouts and windows with hairline edges
+- Quiet scrollbars that hide in the channel and member lists until you hover
+- Fixed background image that never crops when you resize the window
 - Supports visual refresh - New UI with new chat input & new UI with old chat input
 - Supports both light and dark, along with dark variants
 - Supports saturation setting

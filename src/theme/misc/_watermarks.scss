@@ -18,11 +18,11 @@
       content: $themeName;
       position: static;
       margin-left: 10px;
-      font-size: 16px;
+      font-size: 13px;
       font-weight: 600;
+      letter-spacing: 0.2em;
       color: cv('text.normal');
       order: 2;
-      filter: drop-shadow(0 0 5px cv('color.main'));
     }
     &::after {
       content: $version;

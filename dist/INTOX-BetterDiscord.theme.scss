@@ -15,8 +15,8 @@
 /* SETTINGS */
 :root {
   /* ACCENT COLORS */
-  --main-color: #2780e6; /* main accent color (hex, rgb or hsl) [default: #2780e6] */
-  --hover-color: #1e63b3; /* hover accent color (hex, rgb or hsl) [default: #1e63b3] */
+  --main-color: #4a6cf7; /* main accent color (hex, rgb or hsl) [default: #4a6cf7] */
+  --hover-color: #3a56d4; /* hover accent color (hex, rgb or hsl) [default: #3a56d4] */
   --success-color: #43b581; /* positive accent color (hex, rgb or hsl) [default: #43b581] */
   --danger-color: #982929; /* danger accent color (hex, rgb or hsl) [default: #982929] */
   /* STATUS COLORS */
@@ -56,11 +56,18 @@
   --channel-muted: var(--interactive-muted); /* muted channel text color [default: var(--interactive-muted)] */
   --channel-hover: var(--interactive-text-hover); /* hovered channel text color [default: var(--interactive-text-hover)] */
   --channel-selected: var(--interactive-text-active); /* selected channel text color [default: var(--interactive-text-active)] */
-  --channel-selected-bg: var(--main-color); /* selected channel background [default: var(--main-color)] */
-  --channel-unread: var(--main-color); /* unread channel text color [default: var(--main-color)] */
-  --channel-unread-hover: var(--hover-color); /* unread channel hover color [default: var(--hover-color)] */
+  --channel-selected-bg: rgba(255, 255, 255, 0.08); /* selected channel background [default: rgba(255, 255, 255, 0.08)] */
+  --channel-unread: #fff; /* unread channel text color [default: #fff] */
+  --channel-unread-hover: #fff; /* unread channel hover color [default: #fff] */
   /* ACCESSIBILITY */
   --focus-color: var(--main-color); /* outline when pressing TAB key [default: var(--main-color)] */
+  /* INTOX */
+  --intox-speed: 160ms; /* animation speed; set 0ms to turn animations off [default: 160ms] */
+  --intox-ease: cubic-bezier(0.2, 0, 0, 1); /* animation easing [default: cubic-bezier(0.2, 0, 0, 1)] */
+  --intox-radius: 12px; /* roundness of popouts, menus and windows [default: 12px] */
+  --intox-blur: 14px; /* glass blur behind popouts and windows; set 0px to turn off [default: 14px] */
+  --intox-border: rgba(255, 255, 255, 0.07); /* thin outline on popouts and windows [default: rgba(255, 255, 255, 0.07)] */
+  --intox-scroll: rgba(255, 255, 255, 0.16); /* scrollbar color [default: rgba(255, 255, 255, 0.16)] */
 }
 
 /* THEME SPECIFIC SHADING */
@@ -69,43 +76,43 @@
   --background-shading: rgba(252, 252, 252, 0.3); /* app background shading color [default: rgba(252, 252, 252, 0.3)] */
   --card-shading: rgba(252, 252, 252, 0.3); /* cards background shading color [default: rgba(252, 252, 252, 0.3)] */
   --popout-shading: rgba(252, 252, 252, 0.7); /* popouts background shading color [default: rgba(252, 252, 252, 0.7)] */
-  --modal-shading: rgba(252, 252, 252, 0.5); /* modals background shading color [default: rgba(0, 0, 0, 0.6)] */
-  --input-shading: rgba(0, 0, 0, 0.3); /* inputs background shading color [default: rgba(0, 0, 0, 0.6)] */
+  --modal-shading: rgba(252, 252, 252, 0.5); /* modals background shading color [default: rgba(252, 252, 252, 0.5)] */
+  --input-shading: rgba(0, 0, 0, 0.3); /* inputs background shading color [default: rgba(0, 0, 0, 0.3)] */
   --normal-text: #36363c; /* text color [default: #36363c] */
   --muted-text: #75757e; /* muted text color [default: #75757e] */
 }
 
 /* ASH THEME */
 :is(.theme-dark, .theme-light .theme-dark) {
-  --background-shading: rgba(0, 0, 0, 0.4); /* app background shading color [default: rgba(0, 0, 0, 0.4)] */
-  --card-shading: rgba(0, 0, 0, 0.2); /* cards background shading color [default: rgba(0, 0, 0, 0.2)] */
-  --popout-shading: rgba(0, 0, 0, 0.6); /* popouts background shading color [default: rgba(0, 0, 0, 0.6)] */
-  --modal-shading: rgba(0, 0, 0, 0.4); /* modals background shading color [default: rgba(0, 0, 0, 0.4)] */
+  --background-shading: rgba(0, 0, 0, 0.86); /* app background shading color [default: rgba(0, 0, 0, 0.86)] */
+  --card-shading: rgba(255, 255, 255, 0.03); /* cards background shading color [default: rgba(255, 255, 255, 0.03)] */
+  --popout-shading: rgba(10, 10, 12, 0.94); /* popouts background shading color [default: rgba(10, 10, 12, 0.94)] */
+  --modal-shading: rgba(8, 8, 10, 0.92); /* modals background shading color [default: rgba(8, 8, 10, 0.92)] */
   --input-shading: rgba(255, 255, 255, 0.05); /* inputs background shading color [default: rgba(255, 255, 255, 0.05)] */
-  --normal-text: #d8d8db; /* text color [default: #d8d8db] */
-  --muted-text: #aeaeb4; /* muted text color [default: #aeaeb4] */
+  --normal-text: #e4e4e8; /* text color [default: #e4e4e8] */
+  --muted-text: #8e8e98; /* muted text color [default: #8e8e98] */
 }
 
 /* DARK THEME */
 :is(.theme-darker, .theme-light .theme-darker) {
-  --background-shading: rgba(0, 0, 0, 0.6); /* app background shading color [default: rgba(0, 0, 0, 0.6)] */
-  --card-shading: rgba(0, 0, 0, 0.3); /* cards background shading color [default: rgba(0, 0, 0, 0.3)] */
-  --popout-shading: rgba(0, 0, 0, 0.7); /* popouts background shading color [default: rgba(0, 0, 0, 0.7)] */
-  --modal-shading: rgba(0, 0, 0, 0.5); /* modals background shading color [default: rgba(0, 0, 0, 0.6)] */
+  --background-shading: rgba(0, 0, 0, 0.92); /* app background shading color [default: rgba(0, 0, 0, 0.92)] */
+  --card-shading: rgba(255, 255, 255, 0.025); /* cards background shading color [default: rgba(255, 255, 255, 0.025)] */
+  --popout-shading: rgba(6, 6, 8, 0.95); /* popouts background shading color [default: rgba(6, 6, 8, 0.95)] */
+  --modal-shading: rgba(6, 6, 8, 0.94); /* modals background shading color [default: rgba(6, 6, 8, 0.94)] */
   --input-shading: rgba(255, 255, 255, 0.05); /* inputs background shading color [default: rgba(255, 255, 255, 0.05)] */
-  --normal-text: #fbfbfb; /* text color [default: #fbfbfb] */
-  --muted-text: #94949c; /* muted text color [default: #94949c] */
+  --normal-text: #f0f0f3; /* text color [default: #f0f0f3] */
+  --muted-text: #80808a; /* muted text color [default: #80808a] */
 }
 
 /* ONYX THEME */
 :is(.theme-midnight, .theme-light .theme-midnight) {
-  --background-shading: rgba(0, 0, 0, 0.8); /* app background shading color [default: rgba(0, 0, 0, 0.8)] */
-  --card-shading: rgba(0, 0, 0, 0.4); /* cards background shading color [default: rgba(0, 0, 0, 0.4)] */
-  --popout-shading: rgba(0, 0, 0, 0.8); /* popouts background shading color [default: rgba(0, 0, 0, 0.8)] */
-  --modal-shading: rgba(0, 0, 0, 0.6); /* modals background shading color [default: rgba(0, 0, 0, 0.6)] */
+  --background-shading: rgba(0, 0, 0, 0.97); /* app background shading color [default: rgba(0, 0, 0, 0.97)] */
+  --card-shading: rgba(255, 255, 255, 0.02); /* cards background shading color [default: rgba(255, 255, 255, 0.02)] */
+  --popout-shading: rgba(0, 0, 0, 0.96); /* popouts background shading color [default: rgba(0, 0, 0, 0.96)] */
+  --modal-shading: rgba(0, 0, 0, 0.96); /* modals background shading color [default: rgba(0, 0, 0, 0.96)] */
   --input-shading: rgba(255, 255, 255, 0.05); /* inputs background shading color [default: rgba(255, 255, 255, 0.05)] */
-  --normal-text: #dcdcde; /* text color [default: #dcdcde] */
-  --muted-text: #86868e; /* muted text color [default: #86868e] */
+  --normal-text: #f4f4f6; /* text color [default: #f4f4f6] */
+  --muted-text: #787882; /* muted text color [default: #787882] */
 }
 
 /* ADD ADDITIONAL CSS BELOW HERE */

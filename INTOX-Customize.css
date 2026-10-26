@@ -5,22 +5,20 @@
  * 2. In Vencord, open Settings > Vencord > Themes > Edit QuickCSS and paste it at the bottom.
  * 3. Change the values you want. Delete any line you don't want to change.
  *
+ * Tip: in Discord's Appearance settings, pick the "Onyx" theme for the blackest look.
  * INTOX must be enabled in Vencord > Themes for these to apply.
  */
 
 :root {
-  /* COLORS */
-  --main-color: #2780e6;          /* accent color */
-  --hover-color: #1e63b3;         /* accent color when hovered */
-  --success-color: #43b581;
-  --danger-color: #982929;
-
-  /* STATUS COLORS */
-  --online-color: #43b581;
-  --idle-color: #faa61a;
-  --dnd-color: #982929;
-  --streaming-color: #593695;
-  --offline-color: #808080;
+  /* ACCENT (buttons, links, highlights) */
+  --main-color: #4a6cf7;
+  --hover-color: #3a56d4;
+  /* Other accents to try (copy both lines into the block above):
+     white-ish  --main-color: #8a8a96;  --hover-color: #6f6f7a;
+     red        --main-color: #e5484d;  --hover-color: #c93a3f;
+     green      --main-color: #30a46c;  --hover-color: #268a59;
+     violet     --main-color: #8b5cf6;  --hover-color: #7340e0;
+     amber      --main-color: #e09f1f;  --hover-color: #bd8317;  */
 
   /* BACKGROUND */
   --background-image: url(https://files.catbox.moe/9pvwts.png); /* must be an https link */
@@ -29,18 +27,27 @@
   --background-position: center;
   --background-attachment: fixed;
   --background-filter: none;      /* examples: blur(4px), brightness(0.8), saturate(1.3) */
+  /* Want pure black with no image? Use this instead of the image line above:
+     --background-image: none; */
+
+  /* MOTION AND LOOK */
+  --intox-speed: 160ms;           /* animation speed. 0ms turns animations off */
+  --intox-blur: 14px;             /* glass blur behind popouts and windows. 0px turns it off */
+  --intox-radius: 12px;           /* roundness of popouts, menus and windows */
+  --intox-border: rgba(255, 255, 255, 0.07); /* thin outline on popouts and windows */
+  --intox-scroll: rgba(255, 255, 255, 0.16); /* scrollbar color */
 
   /* FONTS */
   --main-font: "gg sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
   --code-font: Consolas, "gg mono", "Liberation Mono", Menlo, Courier, monospace;
 }
 
-/* DARK THEME SHADING (bigger last number = darker) */
+/* HOW DARK THE BACKGROUND IS (Discord "Ash" theme; last number: bigger = darker) */
 :is(.theme-dark, .theme-light .theme-dark) {
-  --background-shading: rgba(0, 0, 0, 0.4);  /* overall tint over the background */
-  --card-shading: rgba(0, 0, 0, 0.2);        /* cards and panels */
-  --popout-shading: rgba(0, 0, 0, 0.6);      /* popouts */
-  --modal-shading: rgba(0, 0, 0, 0.4);       /* windows and settings */
-  --normal-text: #d8d8db;
-  --muted-text: #aeaeb4;
+  --background-shading: rgba(0, 0, 0, 0.86); /* tint over the background image */
+  --card-shading: rgba(255, 255, 255, 0.03); /* cards and panels */
+  --popout-shading: rgba(10, 10, 12, 0.94);  /* popouts */
+  --modal-shading: rgba(8, 8, 10, 0.92);     /* windows and settings */
+  --normal-text: #e4e4e8;
+  --muted-text: #8e8e98;
 }

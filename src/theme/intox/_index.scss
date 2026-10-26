@@ -1,0 +1,83 @@
+@use 'backend' as *;
+
+// INTOX
+// Minimalist black polish: calm motion, glass popouts, quiet scrollbars.
+// Everything here is tunable from the --intox-* variables in main.scss.
+// Set --intox-speed: 0ms to turn all INTOX animations off.
+
+// MOTION
+@keyframes intox-rise {
+  from {
+    opacity: 0;
+    transform: translateY(4px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+@keyframes intox-fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+// Context menus ease in instead of snapping open.
+#{c(popouts menus menu)} {
+  transform-origin: top left;
+  animation: intox-rise var(--intox-speed, 160ms) var(--intox-ease, cubic-bezier(0.2, 0, 0, 1)) both;
+}
+
+// Message hover toolbar fades in.
+#{c(chat popover)} {
+  animation: intox-fade var(--intox-speed, 160ms) var(--intox-ease, cubic-bezier(0.2, 0, 0, 1)) both;
+}
+
+// GLASS + OUTLINE
+// Blurs whatever is behind windows, menus and tooltips and gives them a hairline edge.
+:is(#{c(modals root)}, #{c(popouts menus menu)}, #{c(tooltips tooltip)}) {
+  backdrop-filter: blur(var(--intox-blur, 14px));
+}
+:is(#{c(modals root)}, #{c(popouts menus menu)}) {
+  border: 1px solid var(--intox-border, rgba(255, 255, 255, 0.07));
+  border-radius: var(--intox-radius, 12px);
+}
+
+// SCROLLBARS
+// Thin, neutral, and the narrow ones (channel and member lists) hide until hovered.
+:is(#{c(scroller auto)}, #{c(scroller thin)}) {
+  &::-webkit-scrollbar-thumb {
+    background-color: var(--intox-scroll, rgba(255, 255, 255, 0.16));
+    transition: background-color var(--intox-speed, 160ms) var(--intox-ease, cubic-bezier(0.2, 0, 0, 1));
+  }
+  &::-webkit-scrollbar-thumb:hover {
+    background-color: rgba(255, 255, 255, 0.3);
+  }
+  &::-webkit-scrollbar-thumb:active {
+    background-color: rgba(255, 255, 255, 0.4);
+  }
+}
+#{c(scroller thin)}:not(:hover)::-webkit-scrollbar-thumb {
+  background-color: transparent;
+}
+
+// CHAT
+// Quiet focus outline on the message box.
+#{c(chatForm channelTextArea)} {
+  border-radius: var(--intox-radius, 12px);
+  transition: box-shadow var(--intox-speed, 160ms) var(--intox-ease, cubic-bezier(0.2, 0, 0, 1));
+  &:focus-within {
+    box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.16);
+  }
+}
+
+// Soft row highlight under the cursor (mentions and selected messages keep their own look).
+#{c(chat cozy)}:not(#{c(chat mentioned)}):not(#{c(chat messageSelected)}):not(#{c(chat replying)}) {
+  transition: background-color var(--intox-speed, 160ms) var(--intox-ease, cubic-bezier(0.2, 0, 0, 1));
+  &:hover {
+    background-color: rgba(255, 255, 255, 0.025);
+  }
+}

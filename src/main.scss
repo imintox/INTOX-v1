@@ -62,8 +62,8 @@ $calc: h calc(#{$sf} * s) l / alpha; // avoid repetition
   // other stuff that the theme sets
 
   // THESE VARIABLES ARE TO BE EDITED BY THE END USER
-  --main-color: #2780e6;
-  --hover-color: #1e63b3;
+  --main-color: #4a6cf7;
+  --hover-color: #3a56d4;
   --success-color: #43b581;
   --warning-color: #fff;
   --danger-color: #982929;
@@ -104,11 +104,18 @@ $calc: h calc(#{$sf} * s) l / alpha; // avoid repetition
   --channel-muted: var(--interactive-muted); 
   --channel-hover: var(--interactive-text-hover);
   --channel-selected: var(--interactive-text-active);
-  --channel-selected-bg: var(--main-color);
-  --channel-unread: var(--main-color);
-  --channel-unread-hover: var(--hover-color);
+  --channel-selected-bg: rgba(255, 255, 255, 0.08);
+  --channel-unread: #fff;
+  --channel-unread-hover: #fff;
 
   --focus-color: var(--main-color);
+  /* INTOX */
+  --intox-speed: 160ms; /* animation speed; set 0ms to turn animations off [default: 160ms] */
+  --intox-ease: cubic-bezier(0.2, 0, 0, 1); /* animation easing [default: cubic-bezier(0.2, 0, 0, 1)] */
+  --intox-radius: 12px; /* roundness of popouts, menus and windows [default: 12px] */
+  --intox-blur: 14px; /* glass blur behind popouts and windows; set 0px to turn off [default: 14px] */
+  --intox-border: rgba(255, 255, 255, 0.07); /* thin outline on popouts and windows [default: rgba(255, 255, 255, 0.07)] */
+  --intox-scroll: rgba(255, 255, 255, 0.16); /* scrollbar color [default: rgba(255, 255, 255, 0.16)] */
 }
 
 /* Light Theme */
@@ -128,38 +135,45 @@ $calc: h calc(#{$sf} * s) l / alpha; // avoid repetition
 /* Ash Theme */
 :is(#{c(main themeDark)}, #{c(main themeLight)} #{c(main themeDark)}) {
   // THESE VARIABLES ARE TO BE EDITED BY THE END USER
-  --background-shading: rgba(0, 0, 0, 0.4);
-  --card-shading: rgba(0, 0, 0, 0.2);
-  --popout-shading: rgba(0, 0, 0, 0.6);
-  --modal-shading: rgba(0, 0, 0, 0.4);
+  --background-shading: rgba(0, 0, 0, 0.86);
+  --card-shading: rgba(255, 255, 255, 0.03);
+  --popout-shading: rgba(10, 10, 12, 0.94);
+  --modal-shading: rgba(8, 8, 10, 0.92);
   --input-shading: rgba(255, 255, 255, 0.05);
   // ALSO EDITABLE
-  --normal-text: #d8d8db;
-  --muted-text: #aeaeb4;
+  --normal-text: #e4e4e8;
+  --muted-text: #8e8e98;
 }
 
 /* Dark Theme */
 :is(#{c(main themeDarker)}, #{c(main themeLight)} #{c(main themeDarker)}) {
   // THESE VARIABLES ARE TO BE EDITED BY THE END USER
-  --background-shading: rgba(0, 0, 0, 0.6);
-  --card-shading: rgba(0, 0, 0, 0.3);
-  --popout-shading: rgba(0, 0, 0, 0.7);
-  --modal-shading: rgba(0, 0, 0, 0.5);
+  --background-shading: rgba(0, 0, 0, 0.92);
+  --card-shading: rgba(255, 255, 255, 0.025);
+  --popout-shading: rgba(6, 6, 8, 0.95);
+  --modal-shading: rgba(6, 6, 8, 0.94);
   --input-shading: rgba(255, 255, 255, 0.05);
   // ALSO EDITABLE
-  --normal-text: #fbfbfb;
-  --muted-text: #94949c;
+  --normal-text: #f0f0f3;
+  --muted-text: #80808a;
 }
 
 /* Onyx Theme */
 :is(#{c(main themeMidnight)}, #{c(main themeLight)} #{c(main themeMidnight)}) {
   // THESE VARIABLES ARE TO BE EDITED BY THE END USER
-  --background-shading: rgba(0, 0, 0, 0.8);
-  --card-shading: rgba(0, 0, 0, 0.4);
-  --popout-shading: rgba(0, 0, 0, 0.8);
-  --modal-shading: rgba(0, 0, 0, 0.6);
+  --background-shading: rgba(0, 0, 0, 0.97);
+  --card-shading: rgba(255, 255, 255, 0.02);
+  --popout-shading: rgba(0, 0, 0, 0.96);
+  --modal-shading: rgba(0, 0, 0, 0.96);
   --input-shading: rgba(255, 255, 255, 0.05);
   // ALSO EDITABLE
-  --normal-text: #dcdcde;
-  --muted-text: #86868e;
+  --normal-text: #f4f4f6;
+  --muted-text: #787882;
+}
+
+/* Respect the system "reduce motion" setting */
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --intox-speed: 0ms;
+  }
 }
