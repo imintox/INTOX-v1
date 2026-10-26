@@ -10,21 +10,11 @@
 [![code style: prettier][prettier-badge]][prettier-link]
 [![Language: Sass][sass-badge]][sass-link]
 
-![v6 Sapphire](screenshots/treatment-3.jpg)
+![INTOX preview](https://files.catbox.moe/9pvwts.png)
 
 </div>
 
-### Presets
-List of presets available. All primarily for dark mode
-- Sapphire - Darkish blue | Art: https://www.deviantart.com/kuldarleement/art/Stellar-collision-397866757 ; https://www.deviantart.com/kuldarleement/ ; http://www.kuldarleement.eu/  
-- Ruby - Red | Art: https://www.deviantart.com/artistmef/art/Follow-the-path-279366207 ; https://www.deviantart.com/artistmef/  
-- Amber - Orange | Art: https://www.deviantart.com/chromamancer/art/War-March-201045286 ; https://www.furaffinity.net/view/5408230 ; https://www.furaffinity.net/user/chromamancer/  
-- Emerald - Green | Art: Work from "Guild Wars" or "Guild Wars 2" ; http://www.kekaiart.com/guild-wars-2.html ; http://www.kekaiart.com/uploads/5/4/7/6/5476798/7976137_orig.jpg ; http://www.kekaiart.com/t  
-- Amethyst - Magenta | Art (tinted purple): https://www.deviantart.com/vityar83/art/gulls-149920115 ; https://www.deviantart.com/vityar83  
-- Halloween - Orange, for festivity | Art: https://www.deviantart.com/unidcolor/art/Halloween-2014-491224711 ; https://www.deviantart.com/unidcolor/  
-- Winter - Light blue, for festivity | Art: https://wall.alphacoders.com/big.php?i=114938 ; unknown artist.
-
-Goals:
+### Features
 - Supports visual refresh - New UI with new chat input & new UI with old chat input
 - Supports both light and dark, along with dark variants
 - Supports saturation setting
@@ -75,4 +65,4 @@ The `main.css` file builds to the `/test` directory, which can then be copied in
 
 ## Credits
 
-INTOX is a modified fork of [INTOX v7](https://github.com/INTOX/INTOX-v7) by the INTOX Team, licensed under Apache-2.0 (see `LICENSE` and `NOTICE`). Preset artwork credits are listed under Presets above.
+INTOX is a modified fork of [ClearVision v7](https://github.com/ClearVision/ClearVision-v7) by the ClearVision Team, licensed under Apache-2.0 (see `LICENSE` and `NOTICE`).
