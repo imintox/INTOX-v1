@@ -1,0 +1,20 @@
+/**
+ * @name INTOX
+ * @author INTOX
+ * @version 7.0.1
+ * @description INTOX theme for Vencord. Loads the latest version from GitHub.
+ * @source https://github.com/selfmadegrave/INTOXBlackout-v1
+ * @website https://selfmadegrave.github.io/INTOXBlackout-v1
+ *
+ * Based on ClearVision v7 by the ClearVision Team (Apache-2.0).
+ */
+
+@import url("https://selfmadegrave.github.io/INTOXBlackout-v1/main.css");
+@import url("https://selfmadegrave.github.io/INTOXBlackout-v1/vencord.css");
+
+/* Optional: override settings here, for example:
+:root {
+  --background-fill: #000;
+  --background-size: contain;
+}
+*/
