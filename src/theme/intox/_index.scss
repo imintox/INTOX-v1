@@ -204,14 +204,62 @@ $ease: var(--intox-ease, cubic-bezier(0.2, 0, 0, 1));
 }
 
 // SERVER LIST COLUMNS [--intox-server-columns: 1 (default), 2, 3 or 4] (experimental)
-// Discord's server list: the rail (guildList wrapper) holds a scroller, and its items (home, unread
-// DMs, the separator, the server group, add and discover) sit in a stack inside it. The servers live
-// in a group with an aria-label and no class, right after the separator's list item.
-// Every list item spans the rail and centers its icon, so home and the buttons stay in the middle;
-// only the server group becomes a grid. A hidden rail (for example in fullscreen) stays hidden.
+// Discord's server list: the rail (guildList wrapper) holds a scroller with a stack of items: home,
+// unread DMs, plugin buttons, separators, servers, folders, and the add and discover buttons.
+// The stack becomes a grid. Everything spans the full width (so home and the buttons stay centered)
+// except servers and closed folders, which take one cell each. An open folder spans its own row and
+// lays its servers out in the same columns. Some Discord versions wrap the servers in a class-less
+// group after the separator; that group gets the same treatment. A hidden rail stays hidden.
 $icon: 48px;
 $gap: 12px; // wide enough that each unread pill sits in the gap, never on a neighbour's icon
 $pad: 12px;
+$stack: ':is(.stack_dbd263, [role="tree"])'; // the stack component Discord uses inside the scroller
+$not-server: ':is(#{c(guildList homeContainer)}, #{c(guildList bottomButtonContainer)}, #{c(guildList serverSeparator)}, #{c(guildList bottomButton)}, [data-list-item-id="guildsnav___home"])';
+// a server: a list item with a server icon (or a server nav id) that is not home, a separator or a button
+$server-in-group: '#{c(guildList listItem)}:not(#{c(guildList bottomButtonContainer)} + *):not(:has(#{$not-server})):has(#{c(guildList blobContainer)}, [data-list-item-id^="guildsnav___"])';
+// in the outer stack, the first item is home even when Discord gives it no home id
+$server-in-stack: '#{c(guildList listItem)}:not(:first-child):not(#{c(guildList bottomButtonContainer)} + *):not(:has(#{$not-server})):has(#{c(guildList blobContainer)}, [data-list-item-id^="guildsnav___"])';
+@mixin server-grid($n) {
+  display: grid !important;
+  grid-template-columns: repeat(#{$n}, #{$icon});
+  column-gap: $gap;
+  justify-content: center;
+  align-items: start;
+  align-content: start;
+}
+// Inside a grid: everything spans the full width except servers and closed folders.
+@mixin cells($n, $server) {
+  > * {
+    grid-column: 1 / -1;
+  }
+  > #{$server},
+  > #{c(guildList folder)}:not(#{c(guildList folderExpanded)}) {
+    grid-column: auto;
+    width: #{$icon} !important;
+    margin-inline: 0 !important;
+  }
+  > #{$server} #{c(guildList pillWrapper)},
+  > #{c(guildList folder)} > #{c(guildList listItem)} #{c(guildList pillWrapper)} {
+    left: -6px !important;
+  }
+  // an open folder spans its row and shows its servers in columns; its background reaches past the icons
+  > #{c(guildList folder)}#{c(guildList folderExpanded)} {
+    position: relative;
+    width: 100% !important;
+    [role="group"] {
+      @include server-grid($n);
+      height: auto !important;
+      > #{c(guildList listItem)} {
+        width: #{$icon} !important;
+      }
+    }
+    #{c(guildList folderGroupBackground)} {
+      left: -6px !important;
+      right: -6px !important;
+      width: auto !important;
+    }
+  }
+}
 @each $n in (2, 3, 4) {
   $w: $n * $icon + ($n - 1) * $gap + 2 * $pad;
   @include when(server-columns, $n) {
@@ -222,7 +270,6 @@ $pad: 12px;
       // Discord sizes the inner parts of the list from this variable, declared on the rail itself.
       --custom-guild-list-width: #{$w};
       width: #{$w} !important;
-      // the scroller and everything stacked inside it fill the wider rail
       #{c(guildList tree)},
       #{c(guildList scroller)},
       #{c(guildList scroller)} > * {
@@ -235,21 +282,13 @@ $pad: 12px;
         justify-content: center !important;
         width: 100% !important;
       }
+      #{c(guildList scroller)} > #{$stack} {
+        @include server-grid($n);
+        @include cells($n, $server-in-stack);
+      }
       #{c(guildList listItem)} + div[aria-label]:not([class]) {
-        width: 100% !important;
-        display: grid !important;
-        grid-template-columns: repeat(#{$n}, #{$icon});
-        column-gap: $gap;
-        justify-content: center;
-        align-items: start;
-        > #{c(guildList listItem)},
-        > #{c(guildList folder)} {
-          width: #{$icon} !important;
-          margin-inline: 0 !important;
-        }
-        > #{c(guildList listItem)} #{c(guildList pillWrapper)} {
-          left: -6px !important;
-        }
+        @include server-grid($n);
+        @include cells($n, $server-in-group);
       }
     }
   }
