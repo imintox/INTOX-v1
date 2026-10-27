@@ -1,9 +1,8 @@
 {
   "name": "intox",
-  "description": "Highly customisable theme for BetterDiscord and Vencord.",
+  "description": "Minimal black Discord theme for Vencord and BetterDiscord, based on ClearVision v7.",
   "license": "Apache-2.0",
   "author": "INTOX",
-  "main": "index.js",
   "scripts": {
     "test": "sass src:test --load-path=src --style=expanded --no-source-map && sass dist:test --load-path=src --style=expanded --no-source-map",
     "build": "pnpm run build-u && pnpm run build-m && pnpm run build-dist",
