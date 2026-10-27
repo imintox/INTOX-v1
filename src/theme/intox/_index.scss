@@ -219,13 +219,24 @@ $pad: 12px;
       --custom-guild-list-width: #{$w};
     }
     #{c(guildList wrapper)}:not(#{c(guildList hidden)}):not([style*="width: 0"]) {
+      // Discord sizes the inner parts of the list from this variable, declared on the rail itself.
+      --custom-guild-list-width: #{$w};
       width: #{$w} !important;
+      // the scroller and everything stacked inside it fill the wider rail
+      #{c(guildList tree)},
+      #{c(guildList scroller)},
+      #{c(guildList scroller)} > * {
+        width: 100% !important;
+        min-width: 100% !important;
+        max-width: none !important;
+      }
       #{c(guildList listItem)} {
         display: flex !important;
         justify-content: center !important;
         width: 100% !important;
       }
       #{c(guildList listItem)} + div[aria-label]:not([class]) {
+        width: 100% !important;
         display: grid !important;
         grid-template-columns: repeat(#{$n}, #{$icon});
         column-gap: $gap;
