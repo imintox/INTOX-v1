@@ -204,34 +204,40 @@ $ease: var(--intox-ease, cubic-bezier(0.2, 0, 0, 1));
 }
 
 // SERVER LIST COLUMNS [--intox-server-columns: 1 (default), 2, 3 or 4] (experimental)
-// Servers flow into a grid. Home, separators and the add/discover buttons span the full
-// width so they stay centered. Each cell is 56px: a 48px icon plus room for the unread pill.
+// Discord's server list: the rail (guildList wrapper) holds a scroller, and its items (home, unread
+// DMs, the separator, the server group, add and discover) sit in a stack inside it. The servers live
+// in a group with an aria-label and no class, right after the separator's list item.
+// Every list item spans the rail and centers its icon, so home and the buttons stay in the middle;
+// only the server group becomes a grid. A hidden rail (for example in fullscreen) stays hidden.
+$icon: 48px;
+$gap: 12px; // wide enough that each unread pill sits in the gap, never on a neighbour's icon
+$pad: 12px;
 @each $n in (2, 3, 4) {
+  $w: $n * $icon + ($n - 1) * $gap + 2 * $pad;
   @include when(server-columns, $n) {
     body {
-      --custom-guild-list-width: #{$n * 56px + 16px};
+      --custom-guild-list-width: #{$w};
     }
-    #{c(guildList guilds)} {
-      width: #{$n * 56px + 16px} !important;
-    }
-    #{c(guildList scroller)} {
-      display: grid !important;
-      grid-template-columns: repeat(#{$n}, 56px);
-      justify-content: center;
-      align-content: start;
-      > * {
-        grid-column: 1 / -1;
-        justify-self: center;
+    #{c(guildList wrapper)}:not(#{c(guildList hidden)}):not([style*="width: 0"]) {
+      width: #{$w} !important;
+      #{c(guildList listItem)} {
+        display: flex !important;
+        justify-content: center !important;
+        width: 100% !important;
       }
-      // the group that holds the servers dissolves so each server becomes its own grid cell
-      > :not(#{c(guildList listItem)}):not(#{c(guildList homeContainer)}):not(#{c(guildList bottomButtonContainer)}):has(#{c(guildList blobContainer)}) {
-        display: contents;
-        > * {
-          grid-column: auto;
-          justify-self: center;
+      #{c(guildList listItem)} + div[aria-label]:not([class]) {
+        display: grid !important;
+        grid-template-columns: repeat(#{$n}, #{$icon});
+        column-gap: $gap;
+        justify-content: center;
+        align-items: start;
+        > #{c(guildList listItem)},
+        > #{c(guildList folder)} {
+          width: #{$icon} !important;
+          margin-inline: 0 !important;
         }
-        > #{c(guildList listItem)} {
-          width: 56px;
+        > #{c(guildList listItem)} #{c(guildList pillWrapper)} {
+          left: -6px !important;
         }
       }
     }
