@@ -71,6 +71,12 @@ Example:
 }
 ```
 
+## Custom fonts
+
+- **A font installed on your computer:** set `--main-font` (and `--code-font` for code) in QuickCSS, for example `--main-font: "Segoe UI", sans-serif;`
+- **Any font from [Google Fonts](https://fonts.google.com), even if it isn't installed:** type its name into the [editor](https://imintox.github.io/INTOX-Editor/) under **Fonts**, or follow the web font example at the bottom of [`INTOX-Customize.css`](https://github.com/imintox/INTOX-v1/blob/main/INTOX-Customize.css). The font files load from jsDelivr, which Vencord allows.
+- **Your own font file:** paste an `https://` link ending in `.woff2`, `.woff`, `.ttf` or `.otf` into the editor's font field. If Vencord lists it under **Settings → Vencord → Themes → Blocked Resources**, press **Allow** and fully restart Discord.
+
 ## Optional features
 
 Everything below is **off by default**. Turn a feature on in QuickCSS (or with the [editor](https://imintox.github.io/INTOX-Editor/)), for example:

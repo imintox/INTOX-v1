@@ -55,7 +55,7 @@
   --intox-vignette: off;
   --intox-selection: off;
 
-  /* FONTS */
+  /* FONTS (fonts installed on your computer, or a web font from the section at the bottom) */
   --main-font: "gg sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
   --code-font: Consolas, "gg mono", "Liberation Mono", Menlo, Courier, monospace;
 }
@@ -69,3 +69,18 @@
   --normal-text: #e4e4e8;
   --muted-text: #8e8e98;
 }
+
+/* WEB FONT (optional): use any font from fonts.google.com, even if it isn't installed.
+ * 1. Delete the two short lines just above and below the four @font-face lines (they only hold the comment marks).
+ * 2. Replace "inter" in all four links with the font's name in lowercase, spaces as dashes
+ *    (Inter -> inter, "JetBrains Mono" -> jetbrains-mono, "DM Sans" -> dm-sans).
+ * 3. Put "INTOX Text" first in --main-font in the block at the top, for example:
+ *    --main-font: "INTOX Text", "gg sans", sans-serif;
+ * The files come from jsDelivr, which Vencord allows. The INTOX editor can write this for you.
+ */
+/*
+@font-face { font-family: "INTOX Text"; src: url(https://cdn.jsdelivr.net/fontsource/fonts/inter@latest/latin-400-normal.woff2) format("woff2"); font-weight: 400; font-display: swap; }
+@font-face { font-family: "INTOX Text"; src: url(https://cdn.jsdelivr.net/fontsource/fonts/inter@latest/latin-500-normal.woff2) format("woff2"); font-weight: 500; font-display: swap; }
+@font-face { font-family: "INTOX Text"; src: url(https://cdn.jsdelivr.net/fontsource/fonts/inter@latest/latin-600-normal.woff2) format("woff2"); font-weight: 600; font-display: swap; }
+@font-face { font-family: "INTOX Text"; src: url(https://cdn.jsdelivr.net/fontsource/fonts/inter@latest/latin-700-normal.woff2) format("woff2"); font-weight: 700; font-display: swap; }
+*/
