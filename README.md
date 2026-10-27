@@ -20,6 +20,7 @@
 - Glass-blur popouts and windows with hairline edges
 - Quiet scrollbars that hide in the channel and member lists until you hover
 - Fixed background image that never crops when you resize the window
+- Optional extras, all off until you turn them on: multi-column server list, more animation styles, hover effects, hiding Nitro/Shop/Quests/Active Now, flat (glow-free) unread items, a background vignette and accent text selection
 - Supports visual refresh - New UI with new chat input & new UI with old chat input
 - Supports both light and dark, along with dark variants
 - Supports saturation setting
@@ -69,6 +70,34 @@ Example:
   --background-size: cover; /* fill the window instead of fitting the whole image */
 }
 ```
+
+## Optional features
+
+Everything below is **off by default**. Turn a feature on in QuickCSS (or with the [editor](https://imintox.github.io/INTOX-Editor/)), for example:
+
+```css
+:root {
+  --intox-server-columns: 2;      /* server list in 2 columns, home stays centered (1-4, experimental) */
+  --intox-menu-anim: intox-pop;   /* menus: intox-rise, intox-fade, intox-pop, intox-slide, intox-drop or none */
+  --intox-hide-shop: on;          /* switches use "on" */
+}
+```
+
+| Setting | What it does |
+|---|---|
+| `--intox-server-columns` | `1`-`4` columns in the server list (experimental) |
+| `--intox-menu-anim` | Menu animation (default `intox-rise`) |
+| `--intox-toolbar-anim` | Message hover toolbar animation (default `intox-fade`) |
+| `--intox-window-anim` | Window animation (default `none`) |
+| `--intox-message-anim` | New message animation (default `none`) |
+| `--intox-bg-anim` / `--intox-bg-speed` | Background motion: `intox-drift` or `intox-breathe`, seconds per loop |
+| `--intox-hover-servers` / `-channels` / `-avatars` | Hover effects |
+| `--intox-hide-nitro` / `-shop` / `-quests` / `-active-now` | Hide those parts of Discord |
+| `--intox-no-glow` | Remove glows on unread items |
+| `--intox-vignette` | Darker edges around the background |
+| `--intox-selection` | Accent-colored text selection |
+
+All INTOX motion stays off when your system asks to reduce motion. The links are matched by where they go, so hiding works in every Discord language. Switches rely on CSS style queries, which Discord's desktop app supports; where they aren't supported, the feature simply stays off.
 
 ## Building from source
 

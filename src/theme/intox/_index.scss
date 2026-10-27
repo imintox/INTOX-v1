@@ -3,9 +3,40 @@
 // INTOX
 // Minimalist black polish: calm motion, glass popouts, quiet scrollbars.
 // Everything here is tunable from the --intox-* variables in main.scss.
-// Set --intox-speed: 0ms to turn all INTOX animations off.
+// Set --intox-speed: 0ms to turn INTOX animations off.
+//
+// Optional features are switched on with a variable, e.g. `--intox-hide-shop: on;`.
+// They use CSS style queries: when a switch is off (the default) or unsupported, nothing changes.
+// All INTOX motion only runs when the system "reduce motion" setting is off.
 
-// MOTION
+// Switch helper: @include when(hide-shop) { ... } applies only when --intox-hide-shop is `on`.
+@mixin when($name, $value: on) {
+  @container style(--intox-#{$name}: #{$value}) {
+    @content;
+  }
+}
+// The same, for "any value except" (used for animations whose default is `none`).
+@mixin unless($name, $value) {
+  @container not style(--intox-#{$name}: #{$value}) {
+    @content;
+  }
+}
+
+$speed: var(--intox-speed, 160ms);
+$ease: var(--intox-ease, cubic-bezier(0.2, 0, 0, 1));
+
+// Animations are written as longhands: in the `animation` shorthand a chosen name of `none`
+// would be read as the fill mode, so longhands keep `none` meaning "no animation".
+@mixin anim($var, $default, $duration: $speed, $timing: $ease, $fill: both, $count: 1, $direction: normal) {
+  animation-name: var(--intox-#{$var}, #{$default});
+  animation-duration: $duration;
+  animation-timing-function: $timing;
+  animation-fill-mode: $fill;
+  animation-iteration-count: $count;
+  animation-direction: $direction;
+}
+
+// ANIMATIONS (users pick one by name: intox-rise, intox-fade, intox-pop, intox-slide, intox-drop or none)
 @keyframes intox-rise {
   from {
     opacity: 0;
@@ -24,16 +55,106 @@
     opacity: 1;
   }
 }
-
-// Context menus ease in instead of snapping open.
-#{c(popouts menus menu)} {
-  transform-origin: top left;
-  animation: intox-rise var(--intox-speed, 160ms) var(--intox-ease, cubic-bezier(0.2, 0, 0, 1)) both;
+@keyframes intox-pop {
+  from {
+    opacity: 0;
+    transform: scale(0.92);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+@keyframes intox-slide {
+  from {
+    opacity: 0;
+    transform: translateX(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+@keyframes intox-drop {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+// Slow background motion (background-anim: intox-drift or intox-breathe)
+@keyframes intox-drift {
+  from {
+    transform: scale(1.06) translate(-1%, -1%);
+  }
+  to {
+    transform: scale(1.06) translate(1%, 1%);
+  }
+}
+@keyframes intox-breathe {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(1.04);
+  }
 }
 
-// Message hover toolbar fades in.
-#{c(chat popover)} {
-  animation: intox-fade var(--intox-speed, 160ms) var(--intox-ease, cubic-bezier(0.2, 0, 0, 1)) both;
+@media (prefers-reduced-motion: no-preference) {
+  // Context menus ease in instead of snapping open. [--intox-menu-anim, default intox-rise]
+  #{c(popouts menus menu)} {
+    transform-origin: top left;
+    @include anim(menu-anim, intox-rise);
+  }
+
+  // Message hover toolbar. [--intox-toolbar-anim, default intox-fade]
+  #{c(chat popover)} {
+    @include anim(toolbar-anim, intox-fade);
+  }
+
+  // Windows. [--intox-window-anim, default none]
+  @include unless(window-anim, none) {
+    #{c(modals root)} {
+      @include anim(window-anim, none);
+    }
+  }
+
+  // New messages. [--intox-message-anim, default none]
+  @include unless(message-anim, none) {
+    #{c(chat messageListItem)} {
+      @include anim(message-anim, none);
+    }
+  }
+
+  // Background motion. [--intox-bg-anim, default none; --intox-bg-speed, default 40s]
+  @include unless(bg-anim, none) {
+    #{c(main bg)} {
+      @include anim(bg-anim, none, var(--intox-bg-speed, 40s), ease-in-out, none, infinite, alternate);
+    }
+  }
+
+  // Hover effects (off by default)
+  @include when(hover-servers) {
+    #{c(guildList listItem)} #{c(guildList blobContainer)} {
+      transition: transform $speed $ease;
+    }
+    #{c(guildList listItem)}:hover #{c(guildList blobContainer)} {
+      transform: scale(1.06);
+    }
+  }
+  @include when(hover-channels) {
+    #{c(sidebar server channels wrapper)}:hover #{c(sidebar server channels name)} {
+      transform: translateX(3px);
+    }
+  }
+  @include when(hover-avatars) {
+    #{c(chat chatAvatar)}:hover:not(:active) {
+      transform: scale(1.06);
+    }
+  }
 }
 
 // GLASS + OUTLINE
@@ -51,7 +172,7 @@
 :is(#{c(scroller auto)}, #{c(scroller thin)}) {
   &::-webkit-scrollbar-thumb {
     background-color: var(--intox-scroll, rgba(255, 255, 255, 0.16));
-    transition: background-color var(--intox-speed, 160ms) var(--intox-ease, cubic-bezier(0.2, 0, 0, 1));
+    transition: background-color $speed $ease;
   }
   &::-webkit-scrollbar-thumb:hover {
     background-color: rgba(255, 255, 255, 0.3);
@@ -68,7 +189,7 @@
 // Quiet focus outline on the message box.
 #{c(chatForm channelTextArea)} {
   border-radius: var(--intox-radius, 12px);
-  transition: box-shadow var(--intox-speed, 160ms) var(--intox-ease, cubic-bezier(0.2, 0, 0, 1));
+  transition: box-shadow $speed $ease;
   &:focus-within {
     box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.16);
   }
@@ -76,8 +197,106 @@
 
 // Soft row highlight under the cursor (mentions and selected messages keep their own look).
 #{c(chat cozy)}:not(#{c(chat mentioned)}):not(#{c(chat messageSelected)}):not(#{c(chat replying)}) {
-  transition: background-color var(--intox-speed, 160ms) var(--intox-ease, cubic-bezier(0.2, 0, 0, 1));
+  transition: background-color $speed $ease;
   &:hover {
     background-color: rgba(255, 255, 255, 0.025);
+  }
+}
+
+// SERVER LIST COLUMNS [--intox-server-columns: 1 (default), 2, 3 or 4] (experimental)
+// Servers flow into a grid. Home, separators and the add/discover buttons span the full
+// width so they stay centered. Each cell is 56px: a 48px icon plus room for the unread pill.
+@each $n in (2, 3, 4) {
+  @include when(server-columns, $n) {
+    body {
+      --custom-guild-list-width: #{$n * 56px + 16px};
+    }
+    #{c(guildList guilds)} {
+      width: #{$n * 56px + 16px} !important;
+    }
+    #{c(guildList scroller)} {
+      display: grid !important;
+      grid-template-columns: repeat(#{$n}, 56px);
+      justify-content: center;
+      align-content: start;
+      > * {
+        grid-column: 1 / -1;
+        justify-self: center;
+      }
+      // the group that holds the servers dissolves so each server becomes its own grid cell
+      > :not(#{c(guildList listItem)}):not(#{c(guildList homeContainer)}):not(#{c(guildList bottomButtonContainer)}):has(#{c(guildList blobContainer)}) {
+        display: contents;
+        > * {
+          grid-column: auto;
+          justify-self: center;
+        }
+        > #{c(guildList listItem)} {
+          width: 56px;
+        }
+      }
+    }
+  }
+}
+
+// CLEAN UP (all off by default)
+// Links are matched by where they go, not by their label, so this works in every language.
+// Only the innermost list item that holds the link is hidden.
+$li: ':is(li, [role="listitem"])';
+@mixin hide-link($href) {
+  #{$li}:has(a#{$href}):not(:has(#{$li} a#{$href})) {
+    display: none !important;
+  }
+}
+@include when(hide-nitro) {
+  @include hide-link('[href="/store"]');
+}
+@include when(hide-shop) {
+  @include hide-link('[href="/shop"]');
+}
+@include when(hide-quests) {
+  @include hide-link(':is([href="/quest-home"], [href^="/quests"])');
+  #{c(sidebar panel quest wrapper)} {
+    display: none !important;
+  }
+}
+@include when(hide-active-now) {
+  #{c(friends nowPlayingColumn)} {
+    display: none !important;
+  }
+}
+// Remove the soft glows on unread items for an even flatter look.
+@include when(no-glow) {
+  #{c(sidebar server channels wrapper)}#{c(sidebar server channels unread)} {
+    #{c(sidebar server channels name)} {
+      text-shadow: none;
+    }
+    #{c(sidebar server channels icon)} {
+      filter: none;
+    }
+  }
+  #{c(sidebar server channels wrapper)}#{c(sidebar server channels connected)} #{c(sidebar server channels name)} {
+    text-shadow: none;
+  }
+  #{c(sidebar server channels unreadPill)},
+  #{c(guildList pillItem)} {
+    box-shadow: none;
+  }
+}
+
+// EXTRAS (off by default)
+// Darker edges around the background image.
+@include when(vignette) {
+  #{c(main bg)}::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background: radial-gradient(ellipse at center, transparent 55%, rgba(0, 0, 0, 0.65));
+  }
+}
+// Text you select uses your accent color.
+@include when(selection) {
+  ::selection {
+    background: color-mix(in srgb, var(--hsl-main-color) 45%, transparent);
   }
 }

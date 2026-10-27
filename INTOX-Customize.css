@@ -37,6 +37,25 @@
   --intox-border: rgba(255, 255, 255, 0.07); /* thin outline on popouts and windows */
   --intox-scroll: rgba(255, 255, 255, 0.16); /* scrollbar color */
 
+  /* OPTIONAL FEATURES (all off by default; delete the ones you don't want) */
+  --intox-server-columns: 1;      /* server list columns: 1, 2, 3 or 4 (experimental) */
+  --intox-menu-anim: intox-rise;  /* intox-rise, intox-fade, intox-pop, intox-slide, intox-drop or none */
+  --intox-toolbar-anim: intox-fade;
+  --intox-window-anim: none;
+  --intox-message-anim: none;
+  --intox-bg-anim: none;          /* none, intox-drift or intox-breathe */
+  --intox-bg-speed: 40s;
+  --intox-hover-servers: off;     /* switches: on or off */
+  --intox-hover-channels: off;
+  --intox-hover-avatars: off;
+  --intox-hide-nitro: off;
+  --intox-hide-shop: off;
+  --intox-hide-quests: off;
+  --intox-hide-active-now: off;
+  --intox-no-glow: off;
+  --intox-vignette: off;
+  --intox-selection: off;
+
   /* FONTS */
   --main-font: "gg sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
   --code-font: Consolas, "gg mono", "Liberation Mono", Menlo, Courier, monospace;

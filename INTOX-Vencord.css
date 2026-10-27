@@ -1,7 +1,7 @@
 /**
  * @name INTOX for Vencord
  * @author INTOX
- * @version 1.0.0
+ * @version 1.1.0
  * @description Highly customizable theme for Vencord.
  * @source https://github.com/imintox/INTOX-v1
  * @website https://imintox.github.io/INTOX-v1
@@ -66,6 +66,25 @@
   --intox-blur: 14px; /* glass blur behind popouts and windows; set 0px to turn off [default: 14px] */
   --intox-border: rgba(255, 255, 255, 0.07); /* thin outline on popouts and windows [default: rgba(255, 255, 255, 0.07)] */
   --intox-scroll: rgba(255, 255, 255, 0.16); /* scrollbar color [default: rgba(255, 255, 255, 0.16)] */
+  /* INTOX ANIMATIONS: intox-rise, intox-fade, intox-pop, intox-slide, intox-drop or none */
+  --intox-menu-anim: intox-rise; /* right-click and other menus [default: intox-rise] */
+  --intox-toolbar-anim: intox-fade; /* message hover toolbar [default: intox-fade] */
+  --intox-window-anim: none; /* windows and settings [default: none] */
+  --intox-message-anim: none; /* new messages [default: none] */
+  --intox-bg-anim: none; /* background motion: none, intox-drift or intox-breathe [default: none] */
+  --intox-bg-speed: 40s; /* seconds per background motion loop [default: 40s] */
+  /* INTOX SWITCHES: set to on to turn a feature on */
+  --intox-server-columns: 1; /* server list columns: 1, 2, 3 or 4 (experimental) [default: 1] */
+  --intox-hover-servers: off; /* server icons grow on hover [default: off] */
+  --intox-hover-channels: off; /* channel names slide on hover [default: off] */
+  --intox-hover-avatars: off; /* chat avatars grow on hover [default: off] */
+  --intox-hide-nitro: off; /* hide the Nitro link in Direct Messages [default: off] */
+  --intox-hide-shop: off; /* hide the Shop link in Direct Messages [default: off] */
+  --intox-hide-quests: off; /* hide the Quests link and quest banner [default: off] */
+  --intox-hide-active-now: off; /* hide the Active Now column on the Friends page [default: off] */
+  --intox-no-glow: off; /* remove glows on unread channels and pills [default: off] */
+  --intox-vignette: off; /* darker edges around the background image [default: off] */
+  --intox-selection: off; /* accent-colored text selection [default: off] */
 }
 
 /* THEME SPECIFIC SHADING */
