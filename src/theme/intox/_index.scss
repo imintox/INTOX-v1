@@ -214,11 +214,15 @@ $icon: 48px;
 $gap: 12px; // wide enough that each unread pill sits in the gap, never on a neighbour's icon
 $pad: 12px;
 $stack: ':is(.stack_dbd263, [role="tree"])'; // the stack component Discord uses inside the scroller
-$not-server: ':is(#{c(guildList homeContainer)}, #{c(guildList bottomButtonContainer)}, #{c(guildList serverSeparator)}, #{c(guildList bottomButton)}, [data-list-item-id="guildsnav___home"])';
-// a server: a list item with a server icon (or a server nav id) that is not home, a separator or a button
-$server-in-group: '#{c(guildList listItem)}:not(#{c(guildList bottomButtonContainer)} + *):not(:has(#{$not-server})):has(#{c(guildList blobContainer)}, [data-list-item-id^="guildsnav___"])';
+// Not a server: home, a separator, or the round add / discover buttons. Discord also wraps some
+// servers in a "tutorial" container for its onboarding tips, so that container alone does not
+// mean "button"; the round button itself and Discord's own ids do.
+$not-server: ':is(#{c(guildList homeContainer)}, #{c(guildList serverSeparator)}, #{c(guildList bottomButton)}, [data-list-item-id="guildsnav___home"], [data-list-item-id="guildsnav___create-join-button"], [data-list-item-id="guildsnav___guild-discover-button"])';
+$is-server: ':has(#{c(guildList blobContainer)}, [data-list-item-id^="guildsnav___"]):not(:has(#{$not-server}))';
+// a server: a list item (or a tutorial wrapper around one) holding a server icon or a server id
+$server-in-group: ':is(#{c(guildList listItem)}, #{c(guildList bottomButtonContainer)})#{$is-server}';
 // in the outer stack, the first item is home even when Discord gives it no home id
-$server-in-stack: '#{c(guildList listItem)}:not(:first-child):not(#{c(guildList bottomButtonContainer)} + *):not(:has(#{$not-server})):has(#{c(guildList blobContainer)}, [data-list-item-id^="guildsnav___"])';
+$server-in-stack: ':is(#{c(guildList listItem)}, #{c(guildList bottomButtonContainer)}):not(:first-child)#{$is-server}';
 @mixin server-grid($n) {
   display: grid !important;
   grid-template-columns: repeat(#{$n}, #{$icon});
