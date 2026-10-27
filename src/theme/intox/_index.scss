@@ -320,60 +320,6 @@ $li: ':is(li, [role="listitem"])';
     display: none !important;
   }
 }
-@include when(hide-active-now) {
-  #{c(friends nowPlayingColumn)} {
-    display: none !important;
-  }
-}
-// Links in the Direct Messages list, matched by where they go.
-@include when(hide-requests) {
-  @include hide-link('[href="/message-requests"]');
-}
-@include when(hide-family) {
-  @include hide-link('[href="/family-center"]');
-}
-// Buttons at the bottom of the server list, matched by Discord's own ids (any language),
-// with the English label as a fallback in case an id is missing.
-// The label fallback only applies to the round buttons, so a server that happens to share the name stays.
-// When Discord wraps the button's list item in its tutorial box, the box is hidden too so no empty gap is left.
-// (CSS doesn't allow :has() inside :has(), so the box rules repeat the checks with plain descendants.)
-// The ':root:not(#intox-hide)' prefix matches every page; it only raises specificity so these
-// rules win over the server columns layout, which also sets display on list items.
-@mixin hide-rail-item($id, $label) {
-  $li: c(guildList listItem);
-  $btn: c(guildList bottomButton);
-  $box: c(guildList bottomButtonContainer);
-  :root:not(#intox-hide) {
-    #{$li}:has([data-list-item-id="guildsnav___#{$id}"]),
-    #{$li}:has(#{$btn}):has([aria-label="#{$label}"]),
-    #{$box}:has(> #{$li} [data-list-item-id="guildsnav___#{$id}"]),
-    #{$box}:has(> #{$li} #{$btn}):has(> #{$li} [aria-label="#{$label}"]) {
-      display: none !important;
-    }
-  }
-}
-@include when(hide-add-server) {
-  @include hide-rail-item(create-join-button, 'Add a Server');
-}
-@include when(hide-discover) {
-  @include hide-rail-item(guild-discover-button, 'Discover');
-}
-@include when(hide-download) {
-  @include hide-rail-item(app-download-button, 'Download Apps');
-}
-// The help (?) button in the title bar links to Discord's support site. Links inside messages are left alone.
-@include when(hide-help) {
-  #{c(title bar)} a[href^="https://support.discord.com"] {
-    display: none !important;
-  }
-}
-// The gift button in the message box has no language-independent hook, so this matches its
-// label and only works while Discord is set to English.
-@include when(hide-gift) {
-  #{c(chatForm buttons)} :is(button, [role="button"])[aria-label="Send a gift"] {
-    display: none !important;
-  }
-}
 // Remove the soft glows on unread items for an even flatter look.
 @include when(no-glow) {
   #{c(sidebar server channels wrapper)}#{c(sidebar server channels unread)} {

@@ -20,7 +20,7 @@
 - Glass-blur popouts and windows with hairline edges
 - Quiet scrollbars that hide in the channel and member lists until you hover
 - Fixed background image that never crops when you resize the window
-- Optional extras, all off until you turn them on: multi-column server list, more animation styles, hover effects, hiding parts of Discord you don't use (Nitro, Shop, Quests, Active Now, Message Requests, Family Center, the Add a Server/Discover/Download Apps buttons, Help and the gift button), flat (glow-free) unread items, a background vignette and accent text selection
+- Optional extras, all off until you turn them on: multi-column server list, more animation styles, hover effects, hiding Nitro/Shop/Quests, flat (glow-free) unread items, a background vignette and accent text selection
 - Supports visual refresh - New UI with new chat input & new UI with old chat input
 - Supports both light and dark, along with dark variants
 - Supports saturation setting
@@ -92,11 +92,7 @@ Everything below is **off by default**. Turn a feature on in QuickCSS (or with t
 | `--intox-message-anim` | New message animation (default `none`) |
 | `--intox-bg-anim` / `--intox-bg-speed` | Background motion: `intox-drift` or `intox-breathe`, seconds per loop |
 | `--intox-hover-servers` / `-channels` / `-avatars` | Hover effects |
-| `--intox-hide-nitro` / `-shop` / `-quests` / `-active-now` | Hide those parts of Discord |
-| `--intox-hide-requests` / `-family` | Hide the Message Requests and Family Center links |
-| `--intox-hide-add-server` / `-discover` / `-download` | Hide the buttons at the bottom of the server list |
-| `--intox-hide-help` | Hide the Help (?) button at the top right |
-| `--intox-hide-gift` | Hide the gift button in the message box (English Discord only) |
+| `--intox-hide-nitro` / `-shop` / `-quests` | Hide those parts of Discord |
 | `--intox-no-glow` | Remove glows on unread items |
 | `--intox-vignette` | Darker edges around the background |
 | `--intox-selection` | Accent-colored text selection |
