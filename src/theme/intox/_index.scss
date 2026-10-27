@@ -221,8 +221,9 @@ $not-server: ':is(#{c(guildList homeContainer)}, #{c(guildList serverSeparator)}
 $is-server: ':has(#{c(guildList blobContainer)}, [data-list-item-id^="guildsnav___"]):not(:has(#{$not-server}))';
 // a server: a list item (or a tutorial wrapper around one) holding a server icon or a server id
 $server-in-group: ':is(#{c(guildList listItem)}, #{c(guildList bottomButtonContainer)})#{$is-server}';
-// in the outer stack, the first item is home even when Discord gives it no home id
-$server-in-stack: ':is(#{c(guildList listItem)}, #{c(guildList bottomButtonContainer)}):not(:first-child)#{$is-server}';
+// Home is recognised by its own container or Discord's home id, never by position: newer Discord
+// pins home above the list, so the first item in the list can be a server.
+$server-in-stack: $server-in-group;
 @mixin server-grid($n) {
   display: grid !important;
   grid-template-columns: repeat(#{$n}, #{$icon});
